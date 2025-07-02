@@ -1,6 +1,14 @@
 from typing import Any
 
 
+class HeapException(Exception):
+    pass
+
+
+class EmptyHeapException(HeapException):
+    pass
+
+
 class Heap:
     def __init__(self) -> None:
         self._data = []

@@ -1,4 +1,5 @@
-from src.heap import Heap
+import pytest
+from src.heap import EmptyHeapException, Heap
 
 
 def test_initialization() -> None:
@@ -31,3 +32,9 @@ def test_heap_size_is_1_after_inserting() -> None:
     heap = Heap()
     heap.insert(0)
     assert heap.size() == 1
+
+
+def test_empty_heap_raises_exception() -> None:
+    heap = Heap()
+    with pytest.raises(EmptyHeapException):
+        heap.peek()
