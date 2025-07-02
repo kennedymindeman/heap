@@ -5,7 +5,7 @@ class Heap:
     def __init__(self) -> None:
         self._data = []
 
-    def add(self, item: int) -> None:
+    def insert(self, item: int) -> None:
         self._data.append(item)
 
     def peek(self) -> Any:
