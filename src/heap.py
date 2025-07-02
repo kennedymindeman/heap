@@ -13,3 +13,6 @@ class Heap:
 
     def is_empty(self) -> bool:
         return len(self._data) == 0
+
+    def size(self) -> int:
+        return len(self._data)
