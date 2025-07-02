@@ -18,7 +18,7 @@ class Heap:
         new_item_index = self.size() - 1
         while True:
             parent_index = (new_item_index - 1) // 2
-            if parent_index >= 0 and self._data[parent_index] < self._data[new_item_index]:
+            if self._data[parent_index] < self._data[new_item_index]:
                 self._data[parent_index], self._data[new_item_index] = self._data[new_item_index], self._data[parent_index]
                 new_item_index = parent_index
             else:
@@ -27,7 +27,7 @@ class Heap:
 
     def peek(self) -> Any:
         if self.is_empty():
-            raise EmptyHeapException("Can't peak at an empty heap")
+            raise EmptyHeapException("Can't peek at an empty heap")
         return self._data[0]
 
     def is_empty(self) -> bool:
