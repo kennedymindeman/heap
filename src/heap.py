@@ -12,4 +12,4 @@ class Heap:
         return self._data[0]
 
     def is_empty(self) -> bool:
-        raise NotImplementedError
+        return len(self._data) == 0
