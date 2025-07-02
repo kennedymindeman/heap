@@ -2,7 +2,7 @@ from src.heap import Heap
 
 
 def test_initialization() -> None:
-    heap = Heap()
+    Heap()
 
 
 def test_add_to_empty_heap() -> None:
