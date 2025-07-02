@@ -10,3 +10,6 @@ class Heap:
 
     def peek(self) -> Any:
         return self._data[0]
+
+    def is_empty(self) -> bool:
+        raise NotImplementedError
