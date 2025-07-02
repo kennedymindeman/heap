@@ -23,7 +23,7 @@ class Heap:
             parent_index = (new_item_index - 1) // 2
             if (
                 parent_index < 0 or
-                self._data[parent_index] > self._data[new_item_index]
+                self._data[parent_index] >= self._data[new_item_index]
             ):
                 break
             swap(self._data, parent_index, new_item_index)
