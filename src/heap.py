@@ -3,10 +3,10 @@ from typing import Any
 
 class Heap:
     def __init__(self) -> None:
-        self.lst = []
+        self._data = []
 
     def add(self, item: int) -> None:
-        self.lst.append(item)
+        self._data.append(item)
 
     def peek(self) -> Any:
-        return self.lst[0]
+        return self._data[0]
