@@ -38,3 +38,10 @@ def test_empty_heap_raises_exception() -> None:
     heap = Heap()
     with pytest.raises(EmptyHeapException):
         heap.peek()
+
+
+def test_adding_to_heap_ascending() -> None:
+    heap = Heap()
+    heap.insert(0)
+    heap.insert(1)
+    assert heap.peek() == 1
