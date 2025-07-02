@@ -8,4 +8,4 @@ def test_initialization() -> None:
 def test_add_to_empty_heap() -> None:
     heap = Heap()
     heap.add(0)
-    assert heap.lst == [0]
+    assert heap.peek() == 0
