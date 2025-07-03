@@ -76,3 +76,9 @@ def test_highest_value_on_top_after_extract_max() -> None:
     heap.insert(1)
     heap.extract_max()
     assert heap.peek() == 1
+
+
+def test_extract_max_on_size_1_heap() -> None:
+    heap = Heap()
+    heap.insert(0)
+    assert heap.extract_max() == 0
