@@ -39,3 +39,6 @@ class Heap:
 
     def size(self) -> int:
         return len(self._data)
+
+    def extract_max(self) -> Any:
+        return self._data.pop(0)
