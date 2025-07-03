@@ -60,3 +60,10 @@ def test_adding_negative_values() -> None:
     heap.insert(-1)
     heap.insert(-2)
     assert heap.peek() == -1
+
+
+def test_extract_max_returns_highest_value() -> None:
+    heap = Heap()
+    heap.insert(0)
+    heap.insert(1)
+    assert heap.extract_max() == 1
