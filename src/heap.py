@@ -41,12 +41,14 @@ class Heap:
         if self.is_empty():
             raise EmptyHeapException("Can't extract max from an empty heap")
         ret = self._data[0]
-        self._data[0] = self._data.pop()
+        last_item = self._data.pop()
+        if self.is_empty():
+            return ret
+        self._data[0] = last_item
         curr_index = 0
         while True:
             left = 2 * curr_index + 1
             right = 2 * curr_index + 2
-            largest = curr_index
             candidates = [curr_index]
             if left < self.size():
                 candidates.append(left)
