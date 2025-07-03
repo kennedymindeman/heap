@@ -47,10 +47,12 @@ class Heap:
             left = 2 * curr_index + 1
             right = 2 * curr_index + 2
             largest = curr_index
+            candidates = [curr_index]
             if left < self.size():
-                largest = max([left, curr_index], key=lambda x: self._data[x])
+                candidates.append(left)
             if right < self.size():
-                largest = max([right, curr_index], key=lambda x: self._data[x])
+                candidates.append(right)
+            largest = max(candidates, key=lambda x: self._data[x])
             if largest == curr_index:
                 break
             self._swap(curr_index, largest)
