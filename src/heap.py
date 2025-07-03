@@ -14,9 +14,6 @@ class Heap:
         self._data = []
 
     def insert(self, item: int) -> None:
-        def swap(lst: list, index1: int, index2: int) -> None:
-            lst[index1], lst[index2] = lst[index2], lst[index1]
-
         self._data.append(item)
         new_item_index = self.size() - 1
         while True:
@@ -26,7 +23,7 @@ class Heap:
                 self._data[parent_index] >= self._data[new_item_index]
             ):
                 break
-            swap(self._data, parent_index, new_item_index)
+            self._swap(self._data, parent_index, new_item_index)
             new_item_index = parent_index
 
     def peek(self) -> Any:
@@ -42,3 +39,6 @@ class Heap:
 
     def extract_max(self) -> Any:
         return self._data.pop(0)
+
+    def _swap(self, lst: list, index1: int, index2: int) -> None:
+        lst[index1], lst[index2] = lst[index2], lst[index1]
