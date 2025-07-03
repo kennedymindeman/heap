@@ -38,7 +38,19 @@ class Heap:
         return len(self._data)
 
     def extract_max(self) -> Any:
-        return self._data.pop(0)
+        ret = self._data[0]
+        curr_index = 0
+        while True:
+            left = 2 * curr_index + 1
+            right = 2 * curr_index + 2
+            if left >= len(self._data) or right >= len(self._data):
+                break
+            index, max_val = max([(left, self._data[left]), (right, self._data[right])])
+            self._data[curr_index] = max_val
+            curr_index = index
+        self._swap(self._data, curr_index, -1)
+        self._data.pop()
+        return ret
 
     def _swap(self, lst: list, index1: int, index2: int) -> None:
         lst[index1], lst[index2] = lst[index2], lst[index1]
