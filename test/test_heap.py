@@ -45,3 +45,11 @@ def test_adding_to_heap_ascending() -> None:
     heap.insert(0)
     heap.insert(1)
     assert heap.peek() == 1
+
+
+def test_adding_3_nodes() -> None:
+    heap = Heap()
+    heap.insert(0)
+    heap.insert(2)
+    heap.insert(1)
+    assert heap.peek() == 2
