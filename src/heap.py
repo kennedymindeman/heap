@@ -44,16 +44,17 @@ class Heap:
         self._data[0] = self._data.pop()
         curr_index = 0
         while True:
-            left = curr_index * 2 + 1
-            if left >= self.size():
+            left = 2 * curr_index + 1
+            right = 2 * curr_index + 2
+            largest = curr_index
+            if left < self.size():
+                largest = max([left, curr_index], key=lambda x: self._data[x])
+            if right < self.size():
+                largest = max([right, curr_index], key=lambda x: self._data[x])
+            if largest == curr_index:
                 break
-            right = curr_index * 2 + 2
-            if right >= self.size():
-                self._swap(curr_index, left)
-                break
-            swap_index = max([left, right], key=lambda x: self._data[x])
-            self._swap(curr_index, swap_index)
-            curr_index = swap_index
+            self._swap(curr_index, largest)
+            curr_index = largest
         return ret
 
     def _swap(self, index1: int, index2: int) -> None:
