@@ -53,3 +53,10 @@ def test_adding_3_nodes() -> None:
     heap.insert(2)
     heap.insert(1)
     assert heap.peek() == 2
+
+
+def test_adding_negative_values() -> None:
+    heap = Heap()
+    heap.insert(-1)
+    heap.insert(-2)
+    assert heap.peek() == -1
