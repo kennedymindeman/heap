@@ -41,25 +41,13 @@ class Heap:
         if self.is_empty():
             raise EmptyHeapException("Can't extract max from an empty heap")
         ret = self._data[0]
-        last_item = self._data.pop()
-        if self.is_empty():
-            return ret
-        self._data[0] = last_item
-        curr_index = 0
-        while True:
-            left = 2 * curr_index + 1
-            right = 2 * curr_index + 2
-            candidates = [curr_index]
-            if left < self.size():
-                candidates.append(left)
-            if right < self.size():
-                candidates.append(right)
-            largest = max(candidates, key=lambda x: self._data[x])
-            if largest == curr_index:
-                break
-            self._swap(curr_index, largest)
-            curr_index = largest
+        if not self.is_empty():
+            self._data[0] = self._data.pop()
+        self._bubble_down()
         return ret
+
+    def _bubble_down(self) -> None:
+        pass
 
     def _swap(self, index1: int, index2: int) -> None:
         self._data[index1], self._data[index2] = self._data[index2], self._data[index1]
