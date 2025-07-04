@@ -54,6 +54,7 @@ class Heap:
             if largest is None or self._data[parent] > self._data[largest]:
                 return
             self._swap(parent, largest)
+            parent = largest
 
     def _get_largest_child_index(self, parent: int) -> int | None:
         left = 2 * parent + 1
