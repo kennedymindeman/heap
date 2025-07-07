@@ -86,6 +86,7 @@ def test_extract_max_on_size_1_heap() -> None:
 
 def test_iterable_passed_to_constructor() -> None:
     heap = Heap([1, 2, 3])
+    assert heap.size() == 3
 
 
 def test_peek_after_passing_iterable_to_constructor() -> None:
