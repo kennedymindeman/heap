@@ -92,3 +92,12 @@ def test_iterable_passed_to_constructor() -> None:
 def test_peek_after_passing_iterable_to_constructor() -> None:
     heap = Heap([1, 2, 3])
     assert heap.peek() == 3
+
+
+def test_order_of_heap_after_constructor() -> None:
+    iterable = [2, 1, 3]
+    heap = Heap(iterable)
+    heap_contents = []
+    while not heap.is_empty():
+        heap_contents.append(heap.extract_max())
+    assert heap_contents == sorted(iterable, reverse=True)
