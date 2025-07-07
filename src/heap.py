@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Iterable
 
 
 class HeapException(Exception):
@@ -10,8 +10,8 @@ class EmptyHeapException(HeapException):
 
 
 class Heap:
-    def __init__(self) -> None:
-        self._data = []
+    def __init__(self, iter: Iterable = ()) -> None:
+        self._data = list(iter)
 
     def insert(self, item: int) -> None:
         self._data.append(item)
