@@ -12,6 +12,7 @@ class EmptyHeapException(HeapException):
 class Heap:
     def __init__(self, iter: Iterable = ()) -> None:
         self._data = list(iter)
+        self._heapify()
 
     def insert(self, item: int) -> None:
         self._data.append(item)
@@ -47,11 +48,10 @@ class Heap:
         last_item = self._data.pop()
         if not self.is_empty():
             self._data[0] = last_item
-        self._bubble_down()
+        self._bubble_down(0)
         return ret
 
-    def _bubble_down(self) -> None:
-        parent = 0
+    def _bubble_down(self, parent) -> None:
         while parent < self.size():
             largest = self._get_largest_child_index(parent)
             if largest is None or self._data[parent] > self._data[largest]:
@@ -70,3 +70,7 @@ class Heap:
 
     def _swap(self, index1: int, index2: int) -> None:
         self._data[index1], self._data[index2] = self._data[index2], self._data[index1]
+
+    def _heapify(self) -> None:
+        for index in reversed(range(self.size() // 2)):
+            self._bubble_down(index)
