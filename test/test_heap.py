@@ -3,6 +3,13 @@ from src.heap import EmptyHeapException, Heap
 from random import randint, seed
 
 
+def extract_all_from_heap(heap: Heap) -> list:
+    heap_contents = []
+    while not heap.is_empty():
+        heap_contents.append(heap.extract_max())
+    return heap_contents
+
+
 def test_initialization() -> None:
     Heap()
 
@@ -99,10 +106,7 @@ def test_order_of_heap_after_constructor() -> None:
     seed(69)
     iterable = [randint(1, 1000) for _ in range(100)]
     heap = Heap(iterable)
-    heap_contents = []
-    while not heap.is_empty():
-        heap_contents.append(heap.extract_max())
-    assert heap_contents == sorted(iterable, reverse=True)
+    assert extract_all_from_heap(heap) == sorted(iterable, reverse=True)
 
 
 def test_extract_max_on_empty_heap_raises_exception() -> None:
@@ -118,10 +122,4 @@ def test_heaps_made_from_inserts_match_constructor_version() -> None:
     heap2 = Heap()
     for num in iterable:
         heap2.insert(num)
-    heap1_contents = []
-    while not heap1.is_empty():
-        heap1_contents.append(heap1.extract_max())
-    heap2_contents = []
-    while not heap2.is_empty():
-        heap2_contents.append(heap2.extract_max())
-    assert heap1_contents == heap2_contents
+    assert extract_all_from_heap(heap1) == extract_all_from_heap(heap2)
