@@ -1,5 +1,6 @@
 import pytest
 from src.heap import EmptyHeapException, Heap
+from random import randint, seed
 
 
 def test_initialization() -> None:
@@ -95,7 +96,8 @@ def test_peek_after_passing_iterable_to_constructor() -> None:
 
 
 def test_order_of_heap_after_constructor() -> None:
-    iterable = [2, 1, 3]
+    seed(69)
+    iterable = [randint(1, 1000) for _ in range(100)]
     heap = Heap(iterable)
     heap_contents = []
     while not heap.is_empty():
