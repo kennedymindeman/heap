@@ -10,6 +10,12 @@ def extract_all_from_heap(heap: Heap) -> list:
     return heap_contents
 
 
+@pytest.fixture(name="random_list")
+def get_random_list() -> list:
+    seed(69)
+    return [randint(1, 1000) for _ in range(100)]
+
+
 def test_initialization() -> None:
     Heap()
 
@@ -102,11 +108,9 @@ def test_peek_after_passing_iterable_to_constructor() -> None:
     assert heap.peek() == 3
 
 
-def test_order_of_heap_after_constructor() -> None:
-    seed(69)
-    iterable = [randint(1, 1000) for _ in range(100)]
-    heap = Heap(iterable)
-    assert extract_all_from_heap(heap) == sorted(iterable, reverse=True)
+def test_order_of_heap_after_constructor(random_list: list) -> None:
+    heap = Heap(random_list)
+    assert extract_all_from_heap(heap) == sorted(random_list, reverse=True)
 
 
 def test_extract_max_on_empty_heap_raises_exception() -> None:
@@ -115,11 +119,9 @@ def test_extract_max_on_empty_heap_raises_exception() -> None:
         heap.extract_max()
 
 
-def test_heaps_made_from_inserts_match_constructor_version() -> None:
-    seed(69)
-    iterable = [randint(1, 1000) for _ in range(100)]
-    heap1 = Heap(iterable)
+def test_heaps_made_from_inserts_match_constructor_version(random_list: list) -> None:
+    heap1 = Heap(random_list)
     heap2 = Heap()
-    for num in iterable:
+    for num in random_list:
         heap2.insert(num)
     assert extract_all_from_heap(heap1) == extract_all_from_heap(heap2)
