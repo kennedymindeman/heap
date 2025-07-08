@@ -109,3 +109,19 @@ def test_extract_max_on_empty_heap_raises_exception() -> None:
     heap = Heap()
     with pytest.raises(EmptyHeapException):
         heap.extract_max()
+
+
+def test_heaps_made_from_inserts_match_constructor_version() -> None:
+    seed(69)
+    iterable = [randint(1, 1000) for _ in range(100)]
+    heap1 = Heap(iterable)
+    heap2 = Heap()
+    for num in iterable:
+        heap2.insert(num)
+    heap1_contents = []
+    while not heap1.is_empty():
+        heap1_contents.append(heap1.extract_max())
+    heap2_contents = []
+    while not heap2.is_empty():
+        heap2_contents.append(heap2.extract_max())
+    assert heap1_contents == heap2_contents
