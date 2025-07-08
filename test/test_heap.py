@@ -34,7 +34,7 @@ def test_heap_size_is_1_after_inserting() -> None:
     assert heap.size() == 1
 
 
-def test_empty_heap_raises_exception() -> None:
+def test_peek_on_empty_heap_raises_exception() -> None:
     heap = Heap()
     with pytest.raises(EmptyHeapException):
         heap.peek()
@@ -101,3 +101,9 @@ def test_order_of_heap_after_constructor() -> None:
     while not heap.is_empty():
         heap_contents.append(heap.extract_max())
     assert heap_contents == sorted(iterable, reverse=True)
+
+
+def test_extract_max_on_empty_heap_raises_exception() -> None:
+    heap = Heap()
+    with pytest.raises(EmptyHeapException):
+        heap.extract_max()
