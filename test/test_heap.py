@@ -125,3 +125,8 @@ def test_heaps_made_from_inserts_match_constructor_version(random_list: list) ->
     for num in random_list:
         heap2.insert(num)
     assert extract_all_from_heap(heap1) == extract_all_from_heap(heap2)
+
+
+def test_string_handeling() -> None:
+    heap = Heap(['a', 'b'])
+    assert heap.peek() == 'b'
