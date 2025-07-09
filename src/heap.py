@@ -1,5 +1,5 @@
 from typing import Any, Iterable
-from comparable import Comparable
+from src.comparable import Comparable
 
 
 class HeapException(Exception):
