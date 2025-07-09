@@ -1,4 +1,5 @@
 from typing import Any, Iterable
+from comparable import Comparable
 
 
 class HeapException(Exception):
@@ -14,12 +15,12 @@ class Heap:
         self._data = list(iter)
         self._heapify()
 
-    def insert(self, item: int) -> None:
+    def insert(self, item: Comparable) -> None:
         self._data.append(item)
         new_item_index = self.size() - 1
         self._bubble_up(new_item_index)
 
-    def _bubble_up(self, index) -> None:
+    def _bubble_up(self, index: int) -> None:
         while True:
             parent_index = (index - 1) // 2
             if (
@@ -51,7 +52,7 @@ class Heap:
         self._bubble_down(0)
         return ret
 
-    def _bubble_down(self, parent) -> None:
+    def _bubble_down(self, parent: int) -> None:
         while parent < self.size():
             largest = self._get_largest_child_index(parent)
             if largest is None or self._data[parent] > self._data[largest]:
