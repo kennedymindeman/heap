@@ -1,4 +1,4 @@
-from typing import Any, Iterable
+from typing import Iterable
 from src.comparable import Comparable
 
 
@@ -11,7 +11,7 @@ class EmptyHeapException(HeapException):
 
 
 class Heap:
-    def __init__(self, iter: Iterable = ()) -> None:
+    def __init__(self, iter: Iterable[Comparable] = ()) -> None:
         self._data = list(iter)
         self._heapify()
 
