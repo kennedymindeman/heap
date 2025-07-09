@@ -31,7 +31,7 @@ class Heap:
             self._swap(parent_index, index)
             index = parent_index
 
-    def peek(self) -> Any:
+    def peek(self) -> Comparable:
         if self.is_empty():
             raise EmptyHeapException("Can't peek at an empty heap")
         return self._data[0]
@@ -42,7 +42,7 @@ class Heap:
     def size(self) -> int:
         return len(self._data)
 
-    def extract_max(self) -> Any:
+    def extract_max(self) -> Comparable:
         if self.is_empty():
             raise EmptyHeapException("Can't extract max from an empty heap")
         ret = self._data[0]
